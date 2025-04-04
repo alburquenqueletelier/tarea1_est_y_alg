@@ -13,7 +13,7 @@ Se sugiere utilizar Linux y compilar con gcc, ya que el archivo makefile está d
 
 ## Requerimientos
 
-1. Compilador
+1. Compilador de C: gcc
 2. make file
 
 ## Instalación

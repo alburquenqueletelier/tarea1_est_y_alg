@@ -1,2 +1,5 @@
 # Ignora archivos .txt
 *.txt
+
+# Ignora binario
+main
