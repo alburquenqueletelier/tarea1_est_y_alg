@@ -5,21 +5,16 @@
 
 void main(int argc, char *argv[])
 {
-    if (argc < 6)
-    {
+    // No ejecutar si la cantidad de parametros no es correcta
+    if (argc < 6 || argc > 6){
+   
         printf("Modo de uso: %s <archivo_entrante.txt> <acción> <clave1> <clave2> <archivo_salida.txt> ", argv[0]);
         return;
-    };
+    }
 
-    if (strcmp(argv[2], "encode") == 0)
-    {
-    }
-    else if (strcmp(argv[2], "decode") == 0)
-    {
-    }
-    else
-    {
-        printf("Acción invalidad: usar \"encode\" o \"decode\"");
+
+    if ((strcmp(argv[2], "encode") != 0) && (strcmp(argv[2], "decode") != 0)){
+        printf("Acción invalida: usar \"encode\" o \"decode\"");
         return;
     }
 
@@ -37,6 +32,7 @@ void main(int argc, char *argv[])
 
     FILE *input_file;
     FILE *output_file;
+
     input_file = fopen(argv[1], "r");
     if (input_file == NULL)
     {
@@ -44,6 +40,8 @@ void main(int argc, char *argv[])
         return;
     }
 
+
+    // Obtener size del archivo de entrada para alocar memoria justa para el de salida
     fseek(input_file, 0, SEEK_END);
     long int size = ftell(input_file);
     rewind(input_file); // fseek(input_file, 0, SEEK_SET);
@@ -52,36 +50,30 @@ void main(int argc, char *argv[])
     fread(response_file, sizeof(char), size, input_file);
     response_file[size] = '\0';
 
-    int key1, key2;
-
-    if (argv[2] == "encode"){
-        key1 = 3;
-        key2 = 4;
-    } else {
-        key1 = 4;
-        key2 = 3;
-    }
+    // indice de claves
+    int key1 = 3;
+    int key2 = 4;
 
     for (long int i=0; i < size; i++)
     {
         for (int j = 0; j < strlen(argv[3]); j++)
         {
-            if (tolower(response_file[i]) == tolower(argv[3][j]))
-            {
-                if (islower(response_file[i])){
-                    response_file[i] = tolower(argv[key1][j]);
-                } else {
-
-                    response_file[i] = toupper(argv[key1][j]);
-                }
-            }
-            else if (tolower(response_file[i]) == tolower(argv[4][j]))
+            if (tolower(response_file[i]) == tolower(argv[key1][j]))
             {
                 if (islower(response_file[i])){
                     response_file[i] = tolower(argv[key2][j]);
-                } else {
 
+                } else {
                     response_file[i] = toupper(argv[key2][j]);
+                }
+            }
+            else if (tolower(response_file[i]) == tolower(argv[key2][j]))
+            {
+                if (islower(response_file[i])){
+                    response_file[i] = tolower(argv[key1][j]);
+
+                } else {
+                    response_file[i] = toupper(argv[key1][j]);
                 }
             }
             

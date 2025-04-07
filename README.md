@@ -4,8 +4,8 @@
 
 La siguiente aplicación es un ejemplo de como encriptar un mensaje reemplazando caracteres con otros. En este caso, se reemplaza cada letra del texto siguiendo esta regla: 
 
-Dado dos stings ingresados por el usuario, se reemplaza cada caracter del texto que coincida con una letra del primer string por el caracter correspondiente del segundo string y vicebersa. 
-EJ: si el primer string es "ohl" y el segundo string es "123" entonces el texto " hola mundo" se convertiría en "213a mund1". También permite reversar el proceso.
+Dado dos stings ingresados por el usuario, se reemplaza cada caracter del texto que coincida con una letra del primer string por el caracter correspondiente del segundo string y viceversa. 
+EJ: si el primer string es "ohl" y el segundo string es "123" entonces el texto " hola mundo" se convertiría en "213a mund1". También permite revertir el proceso.
 
 ## Recomendación
 
@@ -25,6 +25,7 @@ Debes crear el ejecutable con el compilador que tu tengas. Si tienes gcc, puedes
 bash
 ```
 gcc -o main main.c
+
 ```
 
 ### Paso 2: ejecutar programa
@@ -34,6 +35,7 @@ Una vez creado el binario ejecutalo en la consola con el siguiente comando y res
 bash
 ```
 ./main text.txt encode ohl 123 codificado.txt
+
 ```
 ### Parámetros y Restricciones
 
